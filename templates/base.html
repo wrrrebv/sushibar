@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Wasabi - суши-бар{% endblock title %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/wasabi_logo.jpg') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block styles %}{% endblock styles %}
+</head>
+
+<body>
+    <div class="header">
+        <div class="header_menu">
+            <a href="{{ url_for('index') }}"><img class="wasabi-icon" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Лого Васаби"></a>
+
+            <div class="header-buttons">
+                    <button class="button-login">Войти</button>
+                    <button class="button" id="cart-button">
+						<img src="../static/img/shopping-cart.svg" alt="shopping cart" class="button-icon">
+						<span class="button-text">Корзина</span>  
+					</button>
+            </div>
+        </div>
+
+    </div>
+
+    {% block content %} {% endblock content %}
+
+
+
+</body>
+
+</html>

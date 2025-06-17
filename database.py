@@ -1,0 +1,102 @@
+import sqlite3
+import hashlib
+
+
+from article import User
+
+
+class Database:
+
+    DATABASE = "database.db"
+    SCHEMA = "schema.sql"
+
+    @staticmethod
+    def execute(sql, params=()):
+        # 1. Подключаемся к базе данных
+        connection = sqlite3.connect(Database.DATABASE)
+
+        # 2. Получаем курсор базы данных
+        cursor = connection.cursor()
+
+        # 3. Ввыполняем какой-то код...
+        cursor.execute(sql, params)
+
+        # 4. Фиксируем изменения в БД
+        connection.commit()
+
+    @staticmethod
+    def select(sql,params=()):
+        connection = sqlite3.connect(Database.DATABASE)
+       
+        cursor = connection.cursor()
+
+        cursor.execute(sql, params)
+        
+        return cursor.fetchall()
+        
+    @staticmethod
+    def convert_to_articles(raw_articles):
+        articles = []
+        for id, title, content, photo in raw_articles:
+            article = Article(title, content, photo, id)
+            articles.append(article)
+
+        return articles
+
+    @staticmethod
+    def create_table():
+        with open(Database.SCHEMA) as schema_file:
+            connection = sqlite3.connect(Database.DATABASE)
+            cursor = connection.cursor()
+            cursor.executescript(schema_file.read())
+            connection.commit()
+            connection.close()
+
+    @staticmethod
+    def save(article: Article):
+        if Database.find_article_by_title(article.title) is not None:
+            return False
+
+        Database.execute(
+            "INSERT INTO articles(title, content, photo) VALUES (?, ?, ?)",
+            [article.title, article.content, article.photo]
+        )
+        return True
+
+    @staticmethod
+    def register_user(email, phone, password):
+        password_hash = hashlib.md5(password.encode()).hexdigest()
+        Database.execute(
+            "INSERT INTO users (email, phone, password_hash) VALUES (?, ?, ?)",
+            [email, phone, password_hash]
+        )
+
+    @staticmethod
+    def can_be_logged_in(email_or_phone, password):
+        user = Database.find_user_by_email_or_phone(email_or_phone)
+        if user is None:
+            return False
+
+        password_hash = hashlib.md5(password.encode()).hexdigest()
+        real_password_hash = Database.select(
+            "SELECT * FROM users WHERE email = ? OR phone = ?",
+            [email_or_phone, email_or_phone]
+        )[0][3]
+
+        if password_hash != real_password_hash:
+            return False
+        
+        return True
+
+    @staticmethod
+    def find_user_by_email_or_phone(email_or_phone):
+        users = Database.select(
+            "SELECT * FROM users WHERE email = ? OR phone = ?",
+            [email_or_phone, email_or_phone]
+        )
+
+        if not users:
+            return None
+        
+        id, email, phone, password_hash = users[0]
+        return User(email=email, phone=phone, id=id)

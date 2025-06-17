@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Рекомендации{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="article_table">
+    {% for group in groups %}
+    <div class="article_table_row">
+        {% for article in group %}
+        <div class="article_card">
+            <a href="{{ url_for('article', name=article.title) }}">
+                <h3>{{ article.title }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

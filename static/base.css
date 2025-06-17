@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gill Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    
+}
+
+hr{
+    width: 100%;
+    border-color: #e6e6e6;
+}
+
+.header_menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+
+}
+
+.ruwiki-icon{
+    width: 150px;
+    height: auto;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    
+}
+
+.button-login{
+    color: #5e2ec8;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 12px;
+    cursor: pointer;
+
+}
+
+.button-login:active{
+    color: #faa700;
+}
+
+
+.button-change-font{
+    color: #1e1e1e;
+    border: none;
+    border-radius: 15px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
