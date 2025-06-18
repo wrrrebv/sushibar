@@ -4,9 +4,6 @@ from flask import (
     request,
     redirect,
     url_for,
-    flash,
-    send_from_directory,
-    abort,
     session
 )
 import os
@@ -16,8 +13,8 @@ from src.database import Database
 
 app = Flask(
     __name__,
-    static_folder="src/static", # Задаем static-папку
-    template_folder="src/template", # Задаем папку для шаблонов (hmtl-файлов)
+    static_folder="src/static",
+    template_folder="src/templates",
 )
 app.config['SECRET_KEY'] = 'e354688fWW1' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' 
@@ -204,17 +201,16 @@ def customer_dashboard():
         return redirect(url_for('login'))
     return render_template('customer_dashboard.html')
 
-@app.route('/')
-def index():
-    return render_template("index.html")
 @app.route('/menu')
 def menu():
     menu_items = MenuItem.query.all()
     return render_template('menu.html', menu_items=menu_items)
 
-
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

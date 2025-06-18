@@ -15,6 +15,11 @@ body {
     flex-direction: column;
 }
 
+.raiting{
+    position: relative;
+    left: -200px; 
+}
+
 h1 {
     color: transparent;
     font-size: 50px;
@@ -25,6 +30,22 @@ h1 {
 
 p{
     color: gray;
+}
+
+.raiting {
+    margin-right: 1000px;
+    margin-left: -270px;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
 }
 
 .center_text{
@@ -45,13 +66,6 @@ p{
 }
 .cars_with_background:hover{
     background-color: bisque;
-}
-
-.cards{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    
 }
 
 .smart-search-block{
@@ -87,28 +101,23 @@ p{
     background-color: beige;
 }
 
-
-
-.ruwiki-icon{
-    width: 150px;
-    height: auto;
+.button-login {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+	gap: 10px;
+	background-color: #3f3f3f;
+	border: none;
+	color: white;
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 10px;
+	text-decoration: none;
 }
 
-.button-create-article {
-    color: #5e2ec8;
-    border: none;
-    border-radius: 15px;
-    padding: 6px 12px;
-    cursor: pointer;
-}
-
-.button-login{
-    color: #5e2ec8;
-    border: none;
-    border-radius: 15px;
-    padding: 6px 12px;
-    cursor: pointer;
-
+.button-login:hover {
+	background-color: #e7813c;
+	color: black;
 }
 
 .button-login:active{

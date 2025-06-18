@@ -12,7 +12,7 @@
 	<body>
 		<div class="header">
             <div class="header_menu">
-                <a href="#"><img class="wasabi-icon" src="../static/img/logo.svg" alt="Лого васаби"></a>
+                <a href="#"><img class="wasabi-icon" src="../static/img/logo1.svg" alt="Лого васаби"></a>
 				<div class="raiting">
 					<img src="../static/img/star.svg" alt="raiting" class="raiting-star">
 					4.5
@@ -29,134 +29,224 @@
 
 
     <main id="menu-content">
-        
-    </main>
-
-		<div class="container">
-			<section class="menu">
-			<header>
-				<nav>
-					<ul>
-						<li><button id="recommendations">Рекомендации</button></li>
-						<li><button id="sushi">Суши</button></li>
-						<li><button id="rolls">Роллы</button></li>
-					</ul>
-				</nav>
+		<section class="menu">
+			<header class="menu-top">
+				<div class="menu-buttons">
+					<nav>
+						<ul>
+							<li><button id="recommendations">Рекомендации</button></li>
+							<li><button id="sushi">Суши</button></li>
+							<li><button id="rolls">Роллы</button></li>
+						</ul>
+					</nav>
+				</div>
 			</header>
-			<main id="menu-content"></main>
-			<div class="cards">
-				<div class="card">
-					<img src="../static/img/unagi_sushi.png" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Унаги</h3>
+			<h2> Рекомендации </h2>
+			<div class="container">
+				<div class="cards">
+					<div class="card">
+						<div class="sushi">
+							<img src="../static/img/unagi_sushi.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Унаги</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Рис, угорь, соус унаги</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">169 ₽</strong>
+								</div>	
+							</div>
 						</div>
-						<div class="card-info">
-							<div class="ingredients">Рис, угорь, соус унаги</div>
+					</div>
+					<div class="card">
+						<div class="sushi">
+							<img src="../static/img/syake_sushi.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Сяке</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Рис, лосось</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">219 ₽</strong>
+								</div>	
+							</div>
 						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">169 ₽</strong>
+					</div>
+					<div class="card">
+						<div class="sushi">
+							<img src="../static/img/ebi_sushi.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Эби</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients"> Рис, креветка отварная</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">169 ₽</strong>
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="rolls">
+							<img src="../static/img/filadelfia.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Филадельфия</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Лосось, сливочный сыр, авокадо, огурец</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">599 ₽</strong>
+								</div>	
+							</div>
 						</div>	
 					</div>
-				</div>
-				<div class="card wow fadeInUp" data-wow-delay="0.4s">
-					<img src="../static/img/syake_sushi.png" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Сяке</h3>
-						</div>
-						<div class="card-info">
-							<div class="ingredients">Рис, лосось</div>
-						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">219 ₽</strong>
+					<div class="card">
+						<div class="rolls">
+							<img src="../static/img/california.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Калифорния</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Снежный краб, авокадо, огурец, икра масаго</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">489 ₽</strong>
+								</div>	
+							</div>
 						</div>	
 					</div>
-				</div>
-				<div class="card wow fadeInUp" data-wow-delay="0.6s">
-					<img src="../static/img/ebi_sushi.png" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Эби</h3>
-						</div>
-						<div class="card-info">
-							<div class="ingredients"> Рис, креветка отварная</div>
-						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">169 ₽</strong>
+					<div class="card">
+						<div class="rolls">
+							<img src="../static/img/ebicaesar.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Эби Цезарь</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Креветки темпура, сливочный сыр, салат айсберг, томат, соус цезарь, пармезан</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">399 ₽</strong>
+								</div>	
+							</div>
 						</div>	
 					</div>
-				</div>
-				<div class="card wow fadeInUp" data-wow-delay="0.2s">
-					<img src="../static/img/cezar.jpg" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Цезарь маки хl</h3>
-						</div>
-						<div class="card-info">
-							<div class="ingredients">Рис, куриная грудка копченая, икра масаго, томат, айсберг, соус цезарь</div>
-						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">250 ₽</strong>
+					<div class="card">
+						<div class="rolls">
+							<img src="../static/img/aburi_s_tuntsom.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Абури с тунцом</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Тунец, снежный краб, огурец, майонез, икра масаго, запечённый сыр, соус шрирача, воздушный рис</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">509 ₽</strong>
+								</div>	
+							</div>
 						</div>	
 					</div>
-				</div>
-				<div class="card wow fadeInUp" data-wow-delay="0.4s">
-					<img src="../static/img/asai.jpg" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Ясай маки стандарт 185 г</h3>
+					<div class="card">
+						<div class="rolls">
+							<img src="../static/img/hagakure.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Хагакуре</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Тунец, снежный краб, огурец, майонез, икра масаго, запечённый сыр, соус шрирача, воздушный рис</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">489 ₽</strong>
+								</div>	
+							</div>
 						</div>
-						<div class="card-info">
-							<div class="ingredients">Рис, помидор свежий, перец болгарский, авокадо, огурец, айсберг</div>
-						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">250 ₽</strong>
-						</div>	
 					</div>
-				</div>
-
-				<div class="card wow fadeInUp" data-wow-delay="0.6s"> 
-					<img src="../static/img/shrimp.jpg" class="card-img">
-					<div class="card-text">
-						<div class="card-heading">
-							<h3 class="card-title card-title-reg">Ролл с креветкой стандарт</h3>
+					<div class="card">
+						<div class="sushi">
+							<img src="../static/img/sushi_zapecheniye_s_krabim.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Суши запеченые с крабом</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Снежный краб, запечённый сыр, соус блю кюрасао, кунжут</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">489 ₽</strong>
+								</div>	
+							</div>
 						</div>
-						<div class="card-info">
-							<div class="ingredients">Рис, водоросли нори, креветки отварные, сыр сливочный, огурцы</div>
+					</div>		
+					<div class="card">
+						<div class="sushi">
+							<img src="../static/img/sushi_zapecheniye_s_lososem.png" class="card-img">
+							<div class="card-text">
+								<div class="card-heading">
+									<h3 class="card-title card-title-reg">Суши запеченые с лососем</h3>
+								</div>
+								<div class="card-info">
+									<div class="ingredients">Лосось, запечённый сыр, соус терияки, воздушный рис</div>
+								</div>
+								<div class="card-buttons">
+									<button class="button button-primary">
+										<span class="button-card-text">В корзину</span> 
+										<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
+									</button>
+									<strong class="card-price-bold">489 ₽</strong>
+								</div>	
+							</div>
 						</div>
-						<div class="card-buttons">
-							<button class="button button-primary">
-								<span class="button-card-text">В корзину</span> 
-								<img src="../static/img/cart.svg" alt="shopping-cart" class="button-card-image">
-							</button>
-							<strong class="card-price-bold">250 ₽</strong>
-						</div>	
 					</div>
-				</div>
-			</div>	
+				</div>	
+			</div>
 		</section>
-		</div>
 	</main>
 
 	<div id="delivery-modal" class="modal">

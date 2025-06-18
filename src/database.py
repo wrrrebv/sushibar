@@ -31,35 +31,7 @@ class Database:
         
         return cursor.fetchall()
         
-    @staticmethod
-    def convert_to_articles(raw_articles):
-        articles = []
-        for id, title, content, photo in raw_articles:
-            article = Article(title, content, photo, id)
-            articles.append(article)
-
-        return articles
-
-    @staticmethod
-    def create_table():
-        with open(Database.SCHEMA) as schema_file:
-            connection = sqlite3.connect(Database.DATABASE)
-            cursor = connection.cursor()
-            cursor.executescript(schema_file.read())
-            connection.commit()
-            connection.close()
-
-    @staticmethod
-    def save(article: Article):
-        if Database.find_article_by_title(article.title) is not None:
-            return False
-
-        Database.execute(
-            "INSERT INTO articles(title, content, photo) VALUES (?, ?, ?)",
-            [article.title, article.content, article.photo]
-        )
-        return True
-
+    
     @staticmethod
     def register_user(email, phone, password):
         password_hash = hashlib.md5(password.encode()).hexdigest()
