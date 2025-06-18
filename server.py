@@ -12,13 +12,16 @@ from flask import (
 import os
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from src.database import Database
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_folder="src/static", # Задаем static-папку
+    template_folder="src/template", # Задаем папку для шаблонов (hmtl-файлов)
+)
 app.config['SECRET_KEY'] = 'e354688fWW1' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = 'uploads/'
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 db = SQLAlchemy(app)
 
 class User(db.Model):

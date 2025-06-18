@@ -2,13 +2,10 @@ import sqlite3
 import hashlib
 
 
-from article import User
-
-
 class Database:
 
-    DATABASE = "database.db"
-    SCHEMA = "schema.sql"
+    SCHEMA_FILE_PATH = "schema.sql"
+    DATABASE_FILE_NAME = "database.db"
 
     @staticmethod
     def execute(sql, params=()):
