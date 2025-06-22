@@ -168,6 +168,9 @@ def cart():
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+def get_cart_items():
+    return [], 1000
+
 @app.route('/order', methods=['GET', 'POST'])
 @login_required
 def order():
@@ -215,10 +218,10 @@ def rate():
         try:
             rating_value = int(request.form.get('rating', 0))
             if 1 <= rating_value <= 5:
-                if hasattr(current_user, 'id'):
+                if session.get("user_id"):
                     new_rating = Rating(
                         value=rating_value,
-                        user_id=current_user.id
+                        user_id=session['user_id']
                     )
                     db.session.add(new_rating)
                     db.session.commit()
