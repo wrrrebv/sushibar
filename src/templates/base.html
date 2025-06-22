@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}Wasabi - суши-бар{% endblock title %}</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/wasabi_logo.jpg') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-    {% block styles %}{% endblock styles %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Wasabi - суши-бар{% endblock %}</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/wasabi_logo.jpg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?v=1.0">
+  {% block styles %}{% endblock %}
 </head>
-
 <body>
     <div class="header">
         <div class="header_menu">
-            <a href="{{ url_for('index') }}"><img class="wasabi-icon" src="{{ url_for('static', filename='img/logo.svg') }}" alt="Лого Васаби"></a>
-
+            <div class="logo-container">
+                <a href="{{ url_for('index') }}" class="logo-link">
+                    <img class="wasabi-icon" src="{{ url_for('static', filename='img/logo1.svg') }}" alt="Wasabi">
+                </a>
+                <div class="raiting">
+                    <a href="{{ url_for('rate') }}">
+                    <img src="{{ url_for('static', filename='img/star.svg') }}" alt="Рейтинг" class="raiting-star">
+                    4.5
+                    </a>
+                </div>
+            </div>
+            
             <div class="header-buttons">
-                    <button class="button-login">Войти</button>
-                    <button class="button" id="cart-button">
-						<img src="../static/img/shopping-cart.svg" alt="shopping cart" class="button-icon">
-						<span class="button-text">Корзина</span>  
-					</button>
+            {% if 'username' in session %}
+            <a class="button button-profile" href="{{ url_for('profile', filename='img/user.svg') }}">
+                <img src="{{ url_for('static', filename='img/user.svg') }}" alt="Профиль">
+                {{ session['username'] }}
+            </a>
+            {% else %}
+            <a class="button button-login" href="{{ url_for('login', filename='img/user.svg') }}">Войти</a>
+            {% endif %}
+            <a class="button" href="{{ url_for('cart') }}">
+            <img src="{{ url_for('static', filename='img/cart.svg') }}" alt="Корзина">
+            Корзина <span id="cart-count"></span>
+            </a>
             </div>
         </div>
-
     </div>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
+    {% block content %}{% endblock %}
+  </main>
 
-    {% block content %} {% endblock content %}
-
-
-
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
 </body>
-
 </html>

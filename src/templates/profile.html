@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Ваш профиль</h1>
+    
+    <div class="profile-info">
+        <div class="info-row">
+            <span class="info-label">Имя пользователя:</span>
+            <span class="info-value">{{ user.username }}</span>
+        </div>
+    </div>
+    
+    <!-- Форма для выхода -->
+    <form action="{{ url_for('logout') }}" method="POST" class="logout-form">
+        <button type="submit" class="button button-danger">Выйти из аккаунта</button>
+    </form>
+</div>
+{% endblock %}

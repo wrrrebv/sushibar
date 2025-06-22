@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Войти</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
-</head>
-<body>
-    <h2>Login</h2>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <form method="post">
-        <label for="username">Имя:</label><br>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Пароль:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Войти</button>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <h1>Вход</h1>
+    <form method="POST" class="auth-form">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-input") }}
+            {% for error in form.username.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-input") }}
+            {% for error in form.password.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="button button-primary">Войти</button>
     </form>
-    <p>Еще не зарегистрированы? <a href="{{ url_for('register') }}">Регистрация</a></p>
-</body>
-</html>
+    <p class="auth-link">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
+</div>
+{% endblock %}

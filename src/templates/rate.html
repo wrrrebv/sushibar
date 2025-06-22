@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Оцените наш сервис</h2>
+<form method="POST">
+    <div class="rating-stars">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">⭐</label>
+        
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">⭐</label>
+        
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">⭐</label>
+        
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">⭐</label>
+        
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">⭐</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Оценить</button>
+</form>
+
+<style>
+.stars {
+    font-size: 48px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.star {
+    color: #cccccc; /* Серый цвет */
+    cursor: pointer;
+    padding: 0 5px;
+    transition: all 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #FFD700; /* Жёлтый цвет */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.rate-button {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+    background: #cccccc !important;
+    color: #666666 !important;
+    border: none;
+    transition: all 0.3s;
+}
+
+.rate-button:not(:disabled) {
+    background: #e7813c !important; /* Оранжевый цвет */
+    color: white !important;
+    cursor: pointer;
+}
+
+.raiting-link {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating-input');
+    const rateButton = document.getElementById('rate-button');
+    let currentRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            currentRating = parseInt(this.dataset.rating);
+            ratingInput.value = currentRating;
+            
+            // Обновляем звёзды
+            stars.forEach((s, index) => {
+                s.classList.toggle('active', index < currentRating);
+            });
+            
+            // Активируем кнопку
+            rateButton.disabled = false;
+        });
+    });
+});
+</script>
+{% endblock %}

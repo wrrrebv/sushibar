@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Корзина - Wasabi{% endblock %}
+
+{% block content %}
+<div id="cart-page" data-auth="{{ 'true' if 'user_id' in session else 'false' }}">
+    <h1>Ваша корзина</h1>
+    
+    <div id="cart-items">
+        <!-- Товары будут подгружаться через JavaScript -->
+        <div class="loading">Загрузка корзины...</div>
+    </div>
+    
+    <div class="cart-summary">
+        <div class="cart-total">
+            <span>Итого:</span>
+            <strong id="total-price">0.00 ₽</strong>
+        </div>
+        
+        <div class="cart-actions">
+            <a href="{{ url_for('index') }}" class="button button-secondary">
+                ← Вернуться в меню
+            </a>
+            <a href="{{ url_for('order') }}" class="button button-primary" id="checkout-button">
+                Оформить заказ →
+            </a>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const authElement = document.getElementById('cart-page');
+    const isLoggedIn = authElement.dataset.auth === 'true';
+    
+    document.getElementById('checkout-button')?.addEventListener('click', function(e) {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            alert('Для оформления заказа войдите в систему');
+            window.location.href = "{{ url_for('login') }}";
+        }
+    });
+});
+</script>
+{% endblock %}
+{% endblock %}

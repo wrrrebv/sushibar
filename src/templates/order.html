@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<div class="order-container">
+    <h1 class="order-title">Оформление заказа</h1>
+    
+    {% if cart_items %}
+        <div class="order-summary">
+            <h3>Ваш заказ:</h3>
+            <ul class="order-items">
+                {% for item in cart_items %}
+                    <li class="order-item">
+                        {{ item.product.name }} ({{ item.quantity }} шт.) - {{ item.product.price * item.quantity }} ₽
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="order-total">
+                <strong>Итого: {{ total }} ₽</strong>
+            </div>
+        </div>
+
+        <form method="POST" class="order-form">
+            {{ form.csrf_token }}
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.city.label(class="form-label") }}
+                    {{ form.city(class="form-control") }}
+                    {% for error in form.city.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    {{ form.street.label(class="form-label") }}
+                    {{ form.street(class="form-control") }}
+                    {% for error in form.street.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.apartment.label(class="form-label") }}
+                    {{ form.apartment(class="form-control") }}
+                    {% for error in form.apartment.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-group">
+                    {{ form.floor.label(class="form-label") }}
+                    {{ form.floor(class="form-control") }}
+                    {% for error in form.floor.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form.delivery_time.label(class="form-label") }}
+                {{ form.delivery_time(class="form-control") }}
+                {% for error in form.delivery_time.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.payment_method.label(class="form-label") }}
+                {{ form.payment_method(class="form-control") }}
+                {% for error in form.payment_method.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="button button-primary">Подтвердить заказ</button>
+        </form>
+    {% else %}
+        <p class="empty-cart">Корзина пуста</p>
+    {% endif %}
+</div>
+{% endblock %}
