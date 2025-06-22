@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.init();
       this.bindEvents();
       this.updateCartCounter();
-      this.loadCartItems(); // Загружаем корзину при инициализации
+      this.loadCartItems();
     }
 
     init() {
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     bindEvents() {
-      // Обработка кликов по кнопкам "В корзину"
       document.addEventListener('click', (e) => {
         const button = e.target.closest('.add-to-cart') || 
                       (e.target.classList.contains('button-card-text') && e.target.closest('button'));
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
           this.addItem(button);
         }
 
-        // Обработка кнопок +/- в корзине
         if (e.target.classList.contains('cart-minus')) {
           this.changeQuantity(e.target.closest('.cart-item'), -1);
         }
@@ -144,10 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Инициализация корзины
   const cartManager = new CartManager();
 
-  // Если на странице есть фильтры, инициализируем их
   const filterButtons = document.querySelectorAll('.filter-btn');
   if (filterButtons.length > 0) {
     filterButtons.forEach(button => {

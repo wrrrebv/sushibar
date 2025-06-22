@@ -18,7 +18,6 @@
   
   <div class="container">
     <div class="cards">
-      <!-- Карточка 1 -->
       <div class="card sushi" data-category="sushi">
         <img src="{{ url_for('static', filename='img/unagi_sushi.png') }}" class="card-img" alt="Суши Унаги">
         <div class="card-text">
@@ -41,7 +40,6 @@
         </div>
       </div>
 
-      <!-- Карточка 2 -->
       <div class="card sushi" data-category="sushi">
         <img src="{{ url_for('static', filename='img/syake_sushi.png') }}" class="card-img" alt="Суши Сяке">
         <div class="card-text">
@@ -64,7 +62,6 @@
         </div>
       </div>
 
-      <!-- Карточка 3 -->
       <div class="card sushi" data-category="sushi">
         <img src="{{ url_for('static', filename='img/ebi_sushi.png') }}" class="card-img" alt="Суши Эби">
         <div class="card-text">
@@ -87,7 +84,6 @@
         </div>
       </div>
 
-      <!-- Карточка 4 -->
       <div class="card rolls" data-category="rolls">
         <img src="{{ url_for('static', filename='img/filadelfia.png') }}" class="card-img" alt="Роллы Филадельфия">
         <div class="card-text">
@@ -110,7 +106,6 @@
         </div>
       </div>
 
-      <!-- Карточка 5 -->
       <div class="card rolls" data-category="rolls">
         <img src="{{ url_for('static', filename='img/california.png') }}" class="card-img" alt="Роллы Калифорния">
         <div class="card-text">
@@ -133,7 +128,6 @@
         </div>
       </div>
 
-      <!-- Карточка 6 -->
       <div class="card rolls" data-category="rolls">
         <img src="{{ url_for('static', filename='img/ebicaesar.png') }}" class="card-img" alt="Роллы Эби Цезарь">
         <div class="card-text">
@@ -171,11 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function() {
       const filter = this.dataset.filter;
       
-      // Обновляем активную кнопку
       filterButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
 
-      // Фильтруем карточки
       cards.forEach(card => {
         if (filter === 'all' || card.dataset.category === filter) {
           card.style.display = 'block';

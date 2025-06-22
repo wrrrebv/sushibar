@@ -76,12 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
             currentRating = parseInt(this.dataset.rating);
             ratingInput.value = currentRating;
             
-            // Обновляем звёзды
             stars.forEach((s, index) => {
                 s.classList.toggle('active', index < currentRating);
             });
             
-            // Активируем кнопку
             rateButton.disabled = false;
         });
     });

@@ -30,18 +30,18 @@ class Order(db.Model):
     floor = db.Column(db.Integer, nullable=False)
     delivery_time = db.Column(db.String(50), nullable=False)
     payment_method = db.Column(db.String(50), nullable=False)
-    status = db.Column(db.String(50), default='Принят')  # Example statuses
+    status = db.Column(db.String(50), default='Принят')
     items = db.relationship('OrderItem', backref='order', lazy=True)
     order_date = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f"Order({self.id}, {self.user_id}, {self.status})"
 
-class OrderItem(db.Model): #connects order and product
+class OrderItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False, default=1) #добавляем поле колличества
+    quantity = db.Column(db.Integer, nullable=False, default=1)
     product = db.relationship('Product')
     def __repr__(self):
         return f"OrderItem({self.order_id}, {self.product_id}, {self.quantity})"

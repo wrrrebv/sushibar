@@ -46,7 +46,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and check_password_hash(user.password, form.password.data):
             session['user_id'] = user.id
-            session['username'] = user.username  # Добавляем имя в сессию
+            session['username'] = user.username
             flash('Вы успешно вошли в систему!', 'success')
             return redirect(url_for('index'))
         else:
@@ -62,7 +62,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.id
-        session['username'] = new_user.username  # Добавляем имя в сессию
+        session['username'] = new_user.username
         flash('Регистрация прошла успешно! Вы вошли в систему.', 'success')
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
@@ -74,11 +74,11 @@ def profile():
     masked_password = user.password[:4] + '*' * (len(user.password) - 4)
     return render_template('profile.html', user=user, masked_password=masked_password)
 
-@app.route('/logout', methods=['POST'])  # Разрешаем только POST-запросы
+@app.route('/logout', methods=['POST'])
 def logout():
     session.clear()  # Полная очистка сессии
     flash('Вы успешно вышли из системы', 'success')
-    return redirect(url_for('index'))  # Перенаправляем на главную
+    return redirect(url_for('index')) 
 
 @app.route('/api/cart', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def handle_cart():
@@ -186,14 +186,12 @@ def order():
         db.session.add(new_order)
         db.session.commit()
 
-        # Add order items to the OrderItem table
         for item in items:
             order_item = OrderItem(order_id=new_order.id, product_id=item['product']['id'], quantity=item['quantity'])
             db.session.add(order_item)
 
         db.session.commit()
 
-        # Clear the cart in the session
         session['cart'] = []
         session.modified = True
 
@@ -217,7 +215,6 @@ def rate():
         try:
             rating_value = int(request.form.get('rating', 0))
             if 1 <= rating_value <= 5:
-                # Убедитесь, что current_user.id существует
                 if hasattr(current_user, 'id'):
                     new_rating = Rating(
                         value=rating_value,
